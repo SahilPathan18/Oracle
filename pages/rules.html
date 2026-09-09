@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rules & Regulations | ORACLE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components/staggered-menu.css">
+</head>
+<body style="padding-top: 80px;">
+    <div class="container mt-5 mb-5">
+        <h2 class="text-center mb-4" style="color: var(--neon-red); text-shadow: 0 0 10px var(--neon-red);">PROTOCOL DIRECTIVES</h2>
+        <p class="text-center text-info mb-5">Strict adherence to the survival protocols is mandatory. Violators will be terminated from the mainframe.</p>
+        <div class="accordion" id="rulesAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingCode">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCode" aria-expanded="true" aria-controls="collapseCode">
+                        [EVENT 01] CODE BREAKER : HACKATHON
+                    </button>
+                </h2>
+                <div id="collapseCode" class="accordion-collapse collapse show" aria-labelledby="headingCode" data-bs-parent="#rulesAccordion">
+                    <div class="accordion-body">
+                        <ul>
+                            <li><strong>Squad Size:</strong> Minimum 2, Maximum 4 operatives per team.</li>
+                            <li><strong>Duration:</strong> 24-hour continuous deployment.</li>
+                            <li><strong>Hardware:</strong> Operatives must utilize their own terminal devices (laptops). External drives containing pre-compiled code repositories are strictly forbidden.</li>
+                            <li><strong>Evaluation:</strong> AI bypass efficiency, UI/UX design, and core backend logic (PHP, JS, Ajax preferred).</li>
+                            <li><strong>Sanctions:</strong> Using external AI tools for more than 20% of the codebase will trigger an automatic disqualification sequence.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingRobo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRobo" aria-expanded="false" aria-controls="collapseRobo">
+                        [EVENT 02] ROBO WARS : ARENA COMBAT
+                    </button>
+                </h2>
+                <div id="collapseRobo" class="accordion-collapse collapse" aria-labelledby="headingRobo" data-bs-parent="#rulesAccordion">
+                    <div class="accordion-body">
+                        <ul>
+                            <li><strong>Weight Class:</strong> Machines must not exceed 15kg (including battery).</li>
+                            <li><strong>Dimensions:</strong> Maximum structural limit is 60cm x 60cm x 60cm.</li>
+                            <li><strong>Weaponry Restrictions:</strong> Untethered projectiles, EMP devices, liquids, and uncontained fire/heat weapons are universally banned.</li>
+                            <li><strong>Combat Format:</strong> 3-minute elimination rounds. The last functional machine survives.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingCyber">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCyber" aria-expanded="false" aria-controls="collapseCyber">
+                        [EVENT 03] CYBER HUNT : DIGITAL SCAVENGER
+                    </button>
+                </h2>
+                <div id="collapseCyber" class="accordion-collapse collapse" aria-labelledby="headingCyber" data-bs-parent="#rulesAccordion">
+                    <div class="accordion-body">
+                        <ul>
+                            <li><strong>Environment:</strong> Challenges are distributed across the campus local network and physical QR checkpoints.</li>
+                            <li><strong>Integrity Protocol:</strong> Attempting to DDoS the college server infrastructure will result in immediate campus security intervention.</li>
+                            <li><strong>Progression:</strong> Flags must be captured in sequential order. Skipping checkpoints is physically impossible.</li>
+                            <li><strong>Time Limit:</strong> Operatives have exactly 120 minutes to secure the final extraction code.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingVStrike">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVStrike" aria-expanded="false" aria-controls="collapseVStrike">
+                        [EVENT 04] V-STRIKE : TACTICAL ESPORTS
+                    </button>
+                </h2>
+                <div id="collapseVStrike" class="accordion-collapse collapse" aria-labelledby="headingVStrike" data-bs-parent="#rulesAccordion">
+                    <div class="accordion-body">
+                        <ul>
+                            <li><strong>Format:</strong> 5v5 standard competitive matches (Valorant).</li>
+                            <li><strong>Hardware Setup:</strong> Peripherals (mice, keyboards, headsets) can be brought by operatives, but all config modifications must be done within the 10-minute setup window.</li>
+                            <li><strong>Fair Play:</strong> Exploitation of map glitches, usage of modified clients, or toxic behavior in all-chat will result in immediate squad elimination.</li>
+                            <li><strong>Map Pool:</strong> Decided via standard pick/ban phase before match initialization.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-5">
+            <a href="register.html" class="btn btn-outline-danger btn-lg">Acknowledge & Register</a>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="../js/components/staggered-menu.js"></script>
+    <script>
+        StaggeredMenu.init({
+            position: 'right',
+            colors: ['#1a1a24', '#ff003c'],
+            logoText: 'ORACLE',
+            logoLink: '../index.html',
+            menuButtonColor: '#00f3ff',
+            openMenuButtonColor: '#fff',
+            accentColor: '#ff003c',
+            changeMenuColorOnOpen: true,
+            isFixed: true,
+            displaySocials: true,
+            displayItemNumbering: true,
+            items: [
+                { label: 'Home', ariaLabel: 'Go to home page', link: '../index.html' },
+                { label: 'Events', ariaLabel: 'View events', link: 'events.html' },
+                { label: 'Rules', ariaLabel: 'View rules and regulations', link: 'rules.html' },
+                { label: 'Teams', ariaLabel: 'View registered teams', link: 'teams.html' },
+                { label: 'Upload', ariaLabel: 'Upload audio', link: '../api/upload.php' },
+                { label: 'Scores', ariaLabel: 'View live scores', link: 'live_score.html' }
+            ],
+            socialItems: [
+                { label: 'Instagram', link: 'https://instagram.com' },
+                { label: 'Twitter', link: 'https://twitter.com' },
+                { label: 'YouTube', link: 'https://youtube.com' }
+            ]
+        });
+    </script>
+</body>
+</html>
