@@ -1,0 +1,941 @@
+/* ==========================================================================
+   THE ORACLE // LAST HUMAN — SYNTH ERA EDITORIAL ARCHITECTURE
+   Font: Neue Machina Ultrabold
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Neue Machina';
+  src: url('../assets/fonts/NeueMachina-Ultrabold.otf') format('opentype');
+  font-weight: 800 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg-primary: #07080a;
+  --bg-spotlight: #161a24;
+  --blue-neon: #1e3a8a;
+  --blue-glow: rgba(30, 58, 138, 0.45);
+  --text-white: #ffffff;
+  --text-muted: #8c96a8;
+  --card-bg: rgba(20, 24, 34, 0.75);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --font-hero: 'Teko', sans-serif;
+  --font-script: 'Caveat', cursive;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: hidden;
+  background-color: var(--bg-primary);
+  font-family: var(--font-body);
+  color: var(--text-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: default;
+  user-select: none;
+}
+
+/* ==========================================================================
+   Atmospheric Film Grain Overlay
+   ========================================================================== */
+.film-grain {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 90;
+  opacity: 0.12;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+
+
+/* ==========================================================================
+   Main Page Layout
+   ========================================================================== */
+@keyframes pageReveal {
+  0% {
+    opacity: 0;
+    filter: blur(8px);
+    transform: scale(0.98) translateY(5px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1) translateY(0);
+  }
+}
+
+.page-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: radial-gradient(ellipse at 50% 45%, #181d28 0%, #0c0f16 45%, #050608 100%);
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Top Navigation Bar (Synth Era Style)
+   ========================================================================== */
+.top-nav-bar {
+  position: relative;
+  z-index: 60;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.2rem 4.2rem;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+}
+
+.logo-symbol {
+  font-family: var(--font-hero);
+  font-weight: 900;
+  color: var(--blue-neon);
+  font-size: 1.1rem;
+  letter-spacing: -1px;
+}
+
+.logo-text {
+  font-family: var(--font-hero);
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.nav-item {
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.25s ease;
+  position: relative;
+}
+
+.nav-item:hover {
+  color: #ffffff;
+}
+
+.pill-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: #ffffff;
+  padding: 0.55rem 1.6rem;
+  border-radius: 40px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.pill-btn:hover {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.35);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Main Hero Stage
+   ========================================================================== */
+.hero-stage {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  animation: pageReveal 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ==========================================================================
+   1. BIG BACKGROUND TITLE (BEHIND THE MAN)
+   - Font: Neue Machina Ultrabold
+   - Symmetrically anchored on either side of the helmet with equal clearance
+   - CSS Grid ensures exact equidistant placement from the central vertical axis
+   ========================================================================== */
+.bg-title-wrapper {
+  position: absolute;
+  top: 15%;
+  left: 0;
+  transform: scaleY(2.2); /* Reduced stretch slightly since font is getting much wider */
+  transform-origin: top center;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  gap: 3vw;
+  padding: 0;
+  align-items: flex-start;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.bg-title-word {
+  font-family: var(--font-hero);
+  font-weight: 900;
+  font-size: clamp(8.5rem, 18.5vw, 22rem); /* Increased size to push towards edges */
+  line-height: 0.8;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  
+  /* Solid grey fading to transparent at the bottom */
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0) 75%);
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+  filter: none;
+  
+  display: inline-block;
+  white-space: nowrap;
+  animation: trackingIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.bg-title-word.word-last {
+  text-align: left;
+}
+
+.bg-title-word.word-human {
+  text-align: right;
+}
+
+
+/* ==========================================================================
+   2. FOREGROUND SUBJECT (THE MAN)
+   - Sits physically in front of the big background title
+   ========================================================================== */
+.subject-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 82vh;
+  max-height: 840px;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.subject-img {
+  height: 100%;
+  width: auto;
+  max-width: 95vw;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: contrast(108%) brightness(102%) drop-shadow(0 20px 45px rgba(0, 0, 0, 0.95));
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  animation: scaleReveal 1.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+  user-select: none;
+  -webkit-user-drag: none;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.subject-wrapper:hover .subject-img {
+  transform: scale(1.015);
+}
+
+/* ==========================================================================
+   3. OVERLAPPING SCRIPT TYPOGRAPHY
+   - Like 'MODERN ARMOR / Created for you.' in reference image
+   - Runs across chest/torso, with head/face cleanly visible above
+   ========================================================================== */
+.script-overlay-group {
+  position: absolute;
+  top: 54%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 88vw;
+  max-width: 1420px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  pointer-events: none;
+  user-select: none;
+}
+
+.script-headline {
+  font-family: var(--font-script);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.script-word {
+  font-family: var(--font-script);
+  font-size: clamp(3.2rem, 7.8vw, 7.8rem);
+  font-weight: 700;
+  color: var(--blue-neon);
+  text-shadow: 0 0 25px var(--blue-glow), 0 0 50px var(--blue-glow);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.script-headline .script-word:first-child {
+  transform: rotate(-3deg);
+}
+
+.script-headline .script-word:last-child {
+  transform: rotate(2deg);
+}
+
+.script-subline {
+  font-family: var(--font-script);
+  font-size: clamp(1.6rem, 2.8vw, 2.8rem);
+  font-weight: 600;
+  color: #ffffff;
+  margin-top: -0.8rem;
+  margin-left: 1.5vw;
+  transform: rotate(-2deg);
+  text-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+}
+
+/* ==========================================================================
+   4. BOTTOM-LEFT INFORMATION BLOCK
+   - Like 'LIMITED PRE-ORDERS' in reference image
+   ========================================================================== */
+.bottom-left-block {
+  position: absolute;
+  bottom: 2.8rem;
+  left: 4.2rem;
+  max-width: 320px;
+  z-index: 20;
+  animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) both 0.2s;
+}
+
+.block-title {
+  font-family: var(--font-hero);
+  font-weight: 900;
+  font-size: 1.35rem;
+  letter-spacing: 0.03em;
+  color: #ffffff;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.block-desc {
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   5. BOTTOM-RIGHT GLASS CARD
+   - Like 'THIS MONTH'S EXCLUSIVE' in reference image
+   ========================================================================== */
+.bottom-right-card {
+  position: absolute;
+  bottom: 2.8rem;
+  right: 4.2rem;
+  width: 280px;
+  background: transparent;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 1.6rem 1.8rem;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
+  z-index: 20;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+  animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) both 0.3s;
+}
+
+.bottom-right-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(30, 58, 138, 0.35);
+}
+
+.card-badge {
+  font-family: var(--font-hero);
+  font-weight: 900;
+  font-size: 1.15rem;
+  letter-spacing: 0.03em;
+  color: #ffffff;
+  line-height: 1.1;
+  margin-bottom: 0.55rem;
+  text-transform: uppercase;
+}
+
+.card-text {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  line-height: 1.48;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+}
+
+.card-action-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: transparent;
+  border: none;
+  color: #d1d8e6;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease, gap 0.25s ease;
+}
+
+.card-action-link:hover {
+  color: var(--blue-neon);
+  gap: 0.85rem;
+}
+
+.card-icon {
+  stroke: currentColor;
+  transition: transform 0.25s ease;
+}
+
+.card-action-link:hover .card-icon {
+  transform: translateX(4px) scale(1.05);
+}
+
+
+
+/* ==========================================================================
+   Keyframes
+   ========================================================================== */
+@keyframes fadeInDown {
+  0% { opacity: 0; transform: translateY(-16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes trackingIn {
+  0% { opacity: 0; transform: scale(0.96); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes scaleReveal {
+  0% { opacity: 0; transform: scale(1.03); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* ==========================================================================
+   Responsive Architecture
+   ========================================================================== */
+
+/* Disable custom cursor on touch / coarse devices */
+@media (hover: none), (pointer: coarse) {
+  .custom-cursor,
+  .custom-cursor-dot {
+    display: none !important;
+  }
+  body, html {
+    cursor: auto !important;
+  }
+}
+
+/* Laptops & Landscape Tablets (<= 1100px) */
+@media (max-width: 1100px) {
+  .top-nav-bar { padding: 1.8rem 2.4rem; }
+  .nav-menu { gap: 1.8rem; }
+  .bg-title-wrapper {
+    column-gap: clamp(280px, 25vw, 340px);
+  }
+  .bg-title-word {
+    font-size: clamp(3.4rem, 7vw, 6.2rem);
+  }
+  .bottom-left-block { left: 2.4rem; bottom: 2rem; }
+  .bottom-right-card { right: 2.4rem; bottom: 2rem; }
+  .subject-wrapper { height: 78vh; }
+}
+
+/* Medium Tablets & Foldables (<= 860px) */
+@media (max-width: 860px) {
+  .top-nav-bar { padding: 1.4rem 1.8rem; }
+  .bg-title-wrapper {
+    column-gap: clamp(240px, 28vw, 300px);
+  }
+  .bg-title-word {
+    font-size: clamp(3rem, 6.8vw, 5rem);
+  }
+  .script-overlay-group {
+    top: 50%;
+  }
+  .script-word {
+    font-size: clamp(2.8rem, 8vw, 5rem);
+  }
+  .subject-wrapper {
+    height: 72vh;
+  }
+}
+
+/* ==========================================================================
+   Mobile Smartphones (<= 768px, e.g. iPhone 13/14/15/16, Android)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .page-container {
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  .top-nav-bar {
+    padding: 1.2rem 1.4rem;
+    z-index: 60;
+    flex-wrap: wrap;
+  }
+
+  .logo-text {
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .brand-logo {
+    order: 1;
+  }
+
+  .header-action {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .gooey-nav-container {
+    order: 3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .gooey-nav-container nav ul {
+    gap: 0.5rem;
+    padding: 0;
+  }
+
+  .gooey-nav-container nav ul li a {
+    padding: 0.4em 0.6em;
+    font-size: 0.8rem;
+  }
+
+  .gooey-nav-container .effect.text {
+    font-size: 0.8rem;
+  }
+
+  .pill-btn {
+    padding: 0.48rem 1.25rem;
+    font-size: 0.8rem;
+  }
+
+  /* 1. Background Title: Stacked Elegantly Behind Operative Helmet */
+  .bg-title-wrapper {
+    top: 9%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .bg-title-word {
+    font-family: var(--font-hero);
+    font-weight: 900;
+    font-size: clamp(4.4rem, 19vw, 6rem);
+    line-height: 0.82;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.16);
+    display: block;
+    width: 100%;
+  }
+
+  .bg-title-word.word-last {
+    justify-self: center;
+    text-align: center;
+  }
+
+  .bg-title-word.word-human {
+    justify-self: center;
+    text-align: center;
+  }
+
+  /* 2. Foreground Subject: Scaled & Centered with High Visual Presence */
+  .subject-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 74vh;
+    height: 74dvh;
+    max-height: 640px;
+    z-index: 5;
+    pointer-events: none;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .subject-img {
+    height: 100%;
+    width: auto;
+    max-width: none;
+    object-fit: contain;
+    object-position: center bottom;
+    filter: contrast(108%) brightness(102%) drop-shadow(0 15px 35px rgba(0, 0, 0, 0.95));
+  }
+
+  /* 3. Script Typography: Balanced Across Armor Collar/Torso */
+  .script-overlay-group {
+    top: auto;
+    bottom: 9.4rem;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    transform: none;
+    width: calc(100vw - 2.4rem);
+    max-width: 360px;
+    z-index: 10;
+    align-items: center;
+    text-align: center;
+  }
+
+  .script-headline {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .script-word {
+    font-size: clamp(2rem, 9.5vw, 2.8rem);
+    line-height: 1;
+    text-shadow: 0 0 20px var(--blue-glow);
+  }
+
+  .script-subline {
+    font-size: clamp(1.1rem, 4.5vw, 1.35rem);
+    margin-top: -0.1rem;
+    margin-left: 0;
+    text-align: center;
+    align-self: center;
+    width: 100%;
+  }
+
+  /* 4. Bottom Left Block: Information accessible in drawer */
+  .bottom-left-block {
+    display: none;
+  }
+
+  /* 5. Bottom Right Card: Perfectly Centered Sleek Floating Glass Pill */
+  .bottom-right-card {
+    position: absolute;
+    bottom: 1.2rem;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    transform: none;
+    animation: none;
+    width: calc(100vw - 2.4rem);
+    max-width: 360px;
+    padding: 0.95rem 1.25rem;
+    border-radius: 16px;
+    background: transparent;
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.75), 0 0 25px rgba(30, 58, 138, 0.12);
+    z-index: 25;
+    pointer-events: auto;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .bottom-right-card:active {
+    transform: scale(0.98);
+    border-color: rgba(30, 58, 138, 0.4);
+  }
+
+  .card-badge {
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card-badge::after {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--blue-neon);
+    box-shadow: 0 0 10px var(--blue-glow);
+    animation: pulseDot 2s infinite ease-in-out;
+  }
+
+  .card-text {
+    font-size: 0.74rem;
+    line-height: 1.4;
+    margin-bottom: 0.7rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-action-link {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--blue-neon);
+  }
+
+}
+
+/* Ultra-compact mobile screens (<= 380px, e.g. iPhone SE) */
+@media (max-width: 380px) {
+  .bg-title-word {
+    font-size: clamp(3.8rem, 18vw, 4.6rem);
+  }
+
+  .script-word {
+    font-size: clamp(2rem, 9.5vw, 2.5rem);
+  }
+
+  .bottom-right-card {
+    padding: 0.85rem 1.1rem;
+    bottom: 0.9rem;
+    width: calc(100vw - 1.8rem);
+  }
+}
+
+/* ==========================================================================
+   GooeyNav (React Bits Port)
+   ========================================================================== */
+:root {
+  --linear-ease: linear(
+    0, 0.068, 0.19 2.7%, 0.804 8.1%, 1.037, 1.199 13.2%, 1.245, 1.27 15.8%, 1.274, 1.272 17.4%,
+    1.249 19.1%, 0.996 28%, 0.949, 0.928 33.3%, 0.926, 0.933 36.8%, 1.001 45.6%, 1.013, 1.019 50.8%,
+    1.018 54.4%, 1 63.1%, 0.995 68%, 1.001 85%, 1
+  );
+  --color-1: #1e3a8a;
+  --color-2: #1d4ed8;
+  --color-3: #2563eb;
+  --color-4: #3b82f6;
+}
+
+.gooey-nav-container {
+  position: relative;
+}
+
+.gooey-nav-container nav {
+  display: flex;
+  position: relative;
+  transform: translate3d(0, 0, 0.01px);
+}
+
+.gooey-nav-container nav ul {
+  display: flex;
+  gap: 2em;
+  list-style: none;
+  padding: 0 1em;
+  margin: 0;
+  position: relative;
+  z-index: 3;
+  color: white;
+  text-shadow: 0 1px 1px hsl(205deg 30% 10% / 0.2);
+}
+
+.gooey-nav-container nav ul li {
+  border-radius: 100vw;
+  position: relative;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0 0 0.5px 1.5px transparent;
+  color: white;
+}
+
+.gooey-nav-container nav ul li a {
+  display: inline-block;
+  padding: 0.6em 1em;
+  text-decoration: none;
+  color: inherit;
+}
+
+.gooey-nav-container nav ul li:focus-within:has(:focus-visible) {
+  box-shadow: 0 0 0.5px 1.5px white;
+}
+
+.gooey-nav-container nav ul li::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  background: white;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+
+.gooey-nav-container nav ul li.active {
+  color: black;
+  text-shadow: none;
+}
+
+.gooey-nav-container nav ul li.active::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.gooey-nav-container .effect {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  opacity: 1;
+  pointer-events: none;
+  display: grid;
+  place-items: center;
+  z-index: 1;
+}
+
+.gooey-nav-container .effect.text {
+  color: white;
+  transition: color 0.3s ease;
+  font-size: 0.86rem;
+  font-weight: 500;
+}
+
+.gooey-nav-container .effect.text.active {
+  color: black;
+}
+
+.gooey-nav-container .effect.filter {
+  filter: url('#goo');
+}
+
+.gooey-nav-container .effect.filter::before {
+  display: none;
+}
+
+.gooey-nav-container .effect.filter::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: white;
+  transform: scale(0);
+  opacity: 0;
+  z-index: -1;
+  border-radius: 100vw;
+}
+
+.gooey-nav-container .effect.active::after {
+  animation: pill 0.3s ease both;
+}
+
+@keyframes pill {
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.particle,
+.point {
+  display: block;
+  opacity: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  transform-origin: center;
+}
+
+.particle {
+  --time: 5s;
+  position: absolute;
+  top: calc(50% - 8px);
+  left: calc(50% - 8px);
+  animation: particle calc(var(--time)) ease 1 -350ms;
+}
+
+.point {
+  background: var(--color);
+  opacity: 1;
+  animation: point calc(var(--time)) ease 1 -350ms;
+}
+
+@keyframes particle {
+  0% { transform: rotate(0deg) translate(calc(var(--start-x)), calc(var(--start-y))); opacity: 1; animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
+  70% { transform: rotate(calc(var(--rotate) * 0.5)) translate(calc(var(--end-x) * 1.2), calc(var(--end-y) * 1.2)); opacity: 1; animation-timing-function: ease; }
+  85% { transform: rotate(calc(var(--rotate) * 0.66)) translate(calc(var(--end-x)), calc(var(--end-y))); opacity: 1; }
+  100% { transform: rotate(calc(var(--rotate) * 1.2)) translate(calc(var(--end-x) * 0.5), calc(var(--end-y) * 0.5)); opacity: 1; }
+}
+
+@keyframes point {
+  0% { transform: scale(0); opacity: 0; animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
+  25% { transform: scale(calc(var(--scale) * 0.25)); }
+  38% { opacity: 1; }
+  65% { transform: scale(var(--scale)); opacity: 1; animation-timing-function: ease; }
+  85% { transform: scale(var(--scale)); opacity: 1; }
+  100% { transform: scale(0); opacity: 0; }
+}

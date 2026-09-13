@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Oracle — Registration</title>
+  <meta name="description"
+    content="Register for Protocol 3000 neural interface and cybernetic preservation.">
+
+  <!-- Google Fonts: Caveat, Inter, Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Teko:wght@700&display=swap"
+    rel="stylesheet">
+
+  <!-- Core Stylesheet with Neue Machina Ultrabold font-face -->
+  <link rel="stylesheet" href="css/style.css?v=12">
+  <link rel="stylesheet" href="css/registration.css">
+</head>
+
+<body>
+  <svg width="0" height="0" style="position: absolute;">
+    <filter id="goo">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+    </filter>
+  </svg>
+
+  <!-- Click Spark Canvas (React Bits Port) -->
+  <canvas id="clickSparkCanvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9999;"></canvas>
+
+  <div class="page-container">
+
+    <!-- Top Navigation (Matching Reference Header Layout) -->
+    <header class="top-nav-bar">
+      <div class="brand-logo">
+        <a href="index.html" style="text-decoration: none;"><span class="logo-text">ORACLE</span></a>
+      </div>
+
+      <div class="gooey-nav-container" id="gooeyNav">
+        <nav class="nav-menu">
+          <ul>
+            <li><a href="index.html#events" class="nav-item">Events</a></li>
+            <li><a href="index.html#team" class="nav-item">Team</a></li>
+            <li class="active"><a href="registration.html" class="nav-item">Registration</a></li>
+          </ul>
+        </nav>
+        <span class="effect filter"></span>
+        <span class="effect text"></span>
+      </div>
+
+      <div class="header-action">
+        <a href="index.html"><button class="pill-btn primary" title="Return to Terminal">Return</button></a>
+      </div>
+    </header>
+
+    <!-- Registration Stage -->
+    <main class="registration-stage">
+      <div class="registration-card">
+        <h2 class="reg-title">Secure Your Place</h2>
+        <p class="reg-desc">
+          The future belongs to the synchronized. Register now for early access to Protocol 3000 integration.
+        </p>
+
+        <form>
+          <div class="form-group custom-select-wrapper">
+            <label>Team Name</label>
+            <div class="custom-select" id="teamSelect">
+              <div class="custom-select-trigger">
+                <span class="selected-text">Select a Team</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+              <div class="custom-options">
+                <div class="custom-option" data-value="neon_knights">Neon Knights</div>
+                <div class="custom-option" data-value="cyber_syndicate">Cyber Syndicate</div>
+                <div class="custom-option" data-value="glitch_protocol">Glitch Protocol</div>
+                <div class="custom-option" data-value="quantum_rogues">Quantum Rogues</div>
+              </div>
+            </div>
+            <input type="hidden" name="team" id="teamInput" required>
+          </div>
+          
+          <div class="form-group custom-select-wrapper">
+            <label>Event Type</label>
+            <div class="custom-select" id="eventTypeSelect">
+              <div class="custom-select-trigger">
+                <span class="selected-text">Select Event Type</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+              <div class="custom-options">
+                <div class="custom-option" data-value="solo">Solo Operation</div>
+                <div class="custom-option" data-value="squad">Squad Mission</div>
+                <div class="custom-option" data-value="corporate">Corporate Sponsored</div>
+              </div>
+            </div>
+            <input type="hidden" name="eventType" id="eventTypeInput" required>
+          </div>
+          
+          <div class="form-group custom-select-wrapper">
+            <label>Select Event</label>
+            <div class="custom-select" id="eventSelect">
+              <div class="custom-select-trigger">
+                <span class="selected-text">Select an Event</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+              <div class="custom-options">
+                <div class="custom-option" data-value="cyber_hackathon">Cyber Hackathon</div>
+                <div class="custom-option" data-value="robo_wars">Robo Wars</div>
+                <div class="custom-option" data-value="neural_design">Neural UI/UX Design</div>
+                <div class="custom-option" data-value="ai_odyssey">AI Odyssey</div>
+                <div class="custom-option" data-value="cosplay">Cosplay</div>
+                <div class="custom-option" data-value="fashion_show">Fashion Show</div>
+              </div>
+            </div>
+            <input type="hidden" name="event" id="eventInput" required>
+          </div>
+
+          <div class="form-group custom-select-wrapper theme-dropdown" id="cosplayThemeWrapper" style="display: none;">
+            <label>Cosplay Theme</label>
+            <div class="custom-select" id="cosplayThemeSelect">
+              <div class="custom-select-trigger">
+                <span class="selected-text">Select a Theme</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+              <div class="custom-options">
+                <div class="custom-option" data-value="mecha">Mecha Armor</div>
+                <div class="custom-option" data-value="neon_noir">Neon Noir</div>
+                <div class="custom-option" data-value="synth_rebel">Synth Rebel</div>
+              </div>
+            </div>
+            <input type="hidden" name="cosplayTheme" id="cosplayThemeInput">
+          </div>
+
+          <div class="form-group custom-select-wrapper theme-dropdown" id="fashionThemeWrapper" style="display: none;">
+            <label>Fashion Show Theme</label>
+            <div class="custom-select" id="fashionThemeSelect">
+              <div class="custom-select-trigger">
+                <span class="selected-text">Select a Theme</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+              <div class="custom-options">
+                <div class="custom-option" data-value="haute_cyber">Haute Cyberpunk</div>
+                <div class="custom-option" data-value="street_tech">Street Techwear</div>
+                <div class="custom-option" data-value="corporate_elite">Corporate Elite</div>
+              </div>
+            </div>
+            <input type="hidden" name="fashionTheme" id="fashionThemeInput">
+          </div>
+
+          <div class="form-group">
+            <label>Participant Names</label>
+            <textarea class="form-control" rows="3" placeholder="Enter all participant names (comma separated)" required></textarea>
+          </div>
+          
+
+          <button type="submit" class="btn-power-smash">
+            <span class="btn-power-smash-overlay1"></span>
+            <span class="btn-power-smash-overlay2"></span>
+            <span class="btn-power-smash-content">
+              SUBMIT
+            </span>
+          </button>
+        </form>
+      </div>
+    </main>
+
+  </div>
+
+  <script src="js/app.js"></script>
+  <script>
+    // Custom Select Dropdown Logic
+    document.addEventListener('DOMContentLoaded', () => {
+      const customSelects = document.querySelectorAll('.custom-select');
+
+      customSelects.forEach(customSelect => {
+        const selectTrigger = customSelect.querySelector('.custom-select-trigger');
+        const selectedText = customSelect.querySelector('.selected-text');
+        const options = customSelect.querySelectorAll('.custom-option');
+        const hiddenInput = customSelect.nextElementSibling;
+
+        // Toggle dropdown
+        selectTrigger.addEventListener('click', (e) => {
+          document.querySelectorAll('.custom-select.open').forEach(openSelect => {
+            if (openSelect !== customSelect) {
+              openSelect.classList.remove('open');
+            }
+          });
+          customSelect.classList.toggle('open');
+          e.stopPropagation();
+        });
+
+        // Select an option
+        options.forEach(option => {
+          option.addEventListener('click', () => {
+            options.forEach(opt => opt.classList.remove('selected'));
+            
+            option.classList.add('selected');
+            
+            selectedText.textContent = option.textContent;
+            if (hiddenInput) {
+              hiddenInput.value = option.getAttribute('data-value');
+            }
+            selectTrigger.classList.add('selected');
+            
+            // Handle Event specific sub-dropdowns
+            if (customSelect.id === 'eventSelect') {
+              const val = option.getAttribute('data-value');
+              const cosplayWrapper = document.getElementById('cosplayThemeWrapper');
+              const fashionWrapper = document.getElementById('fashionThemeWrapper');
+              
+              if (val === 'cosplay') {
+                cosplayWrapper.style.display = 'block';
+                fashionWrapper.style.display = 'none';
+              } else if (val === 'fashion_show') {
+                fashionWrapper.style.display = 'block';
+                cosplayWrapper.style.display = 'none';
+              } else {
+                cosplayWrapper.style.display = 'none';
+                fashionWrapper.style.display = 'none';
+              }
+            }
+
+            customSelect.classList.remove('open');
+          });
+        });
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', (e) => {
+        customSelects.forEach(customSelect => {
+          if (!customSelect.contains(e.target)) {
+            customSelect.classList.remove('open');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
