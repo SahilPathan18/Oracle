@@ -27,21 +27,25 @@ document.addEventListener('DOMContentLoaded', () => {
       if (audioCtx.state === 'suspended') {
         audioCtx.resume();
       }
+      const now = audioCtx.currentTime + 0.02; // Small buffer to ensure timing
       const osc = audioCtx.createOscillator();
       const gain = audioCtx.createGain();
+      
       osc.type = type;
-      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(freq * 1.5, audioCtx.currentTime + duration);
+      osc.frequency.setValueAtTime(freq, now);
+      osc.frequency.exponentialRampToValueAtTime(freq * 1.5, now + duration);
 
-      gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+      gain.gain.setValueAtTime(0.12, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
 
       osc.connect(gain);
       gain.connect(audioCtx.destination);
 
-      osc.start();
-      osc.stop(audioCtx.currentTime + duration);
-    } catch (e) {}
+      osc.start(now);
+      osc.stop(now + duration);
+    } catch (e) {
+      console.warn('Audio playback failed:', e);
+    }
   }
 
   // Hover targets
