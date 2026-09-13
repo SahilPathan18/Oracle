@@ -164,10 +164,10 @@ html, body {
 }
 
 .pill-btn:hover {
-  background: #ffffff;
-  color: #000000;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
   border-color: #ffffff;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
   transform: translateY(-1px);
 }
 
