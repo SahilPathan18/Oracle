@@ -200,6 +200,7 @@ const teamMembersData = {
     "CHANDAN P",
     "CHETHAN D",
     "PRAJWAL K N",
+    "Tejas R",
     "PREMA N",
     "YESHWANTH E",
     "HITHESH D",
